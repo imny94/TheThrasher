@@ -130,7 +130,7 @@ public class DynamicBinFilledClassifier {
 //            svmCls.buildClassifier(trainingSet);
             ibk = new IBk();
             ibk.buildClassifier(trainingSet);
-            weka.core.SerializationHelper.write("classifier2/src/main/java/com/example/svmBinTrainedModel", ibk);//svmCls); // Stores trained model as "svmBinTrainedModel"
+            weka.core.SerializationHelper.write(fileName, ibk);//svmCls); // Stores trained model as "svmBinTrainedModel"
             // To load, use   WLSVM svmCls = (WLSVM) weka.core.SerializationHelper.read("svmTrainedModel");
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,7 +171,7 @@ public class DynamicBinFilledClassifier {
                 data.setClassIndex(data.numAttributes()-1);
                 ibk = new IBk();
                 ibk.buildClassifier(data);
-                weka.core.SerializationHelper.write("classifier2/src/main/java/com/example/svmBinTrainedModel", ibk);
+                weka.core.SerializationHelper.write(fileName, ibk);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {

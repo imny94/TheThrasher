@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e586d758-61ba-4c6d-88a3-418955ee6f36" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classifier2/src/main/java/com/example/svmBinTrainedModel" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java" afterPath="$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classifier2/src/main/java/com/example/testClassifier.java" afterPath="$PROJECT_DIR$/classifier2/src/main/java/com/example/testClassifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classifier2/src/main/java/com/example/sampleTest.arff" afterPath="$PROJECT_DIR$/classifier2/src/main/java/com/example/sampleTest.arff" />
     </list>
     <ignored path="1D_Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,13 +47,13 @@
       <file leaf-file-name="DynamicBinFilledClassifier.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="132" column="87" selection-start-line="132" selection-start-column="87" selection-end-line="132" selection-end-column="87" />
+            <state relative-caret-position="583">
+              <caret line="172" column="47" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#793#828#0" expanded="false" />
-                <element signature="e#7236#7283#0" expanded="false" />
-                <element signature="e#7739#7754#0" expanded="false" />
+                <element signature="e#7136#7183#0" expanded="false" />
+                <element signature="e#7639#7654#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,8 +62,8 @@
       <file leaf-file-name="testClassifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/testClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+            <state relative-caret-position="242">
+              <caret line="11" column="32" selection-start-line="10" selection-start-column="19" selection-end-line="11" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -1176,21 +1178,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/testClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+        <state relative-caret-position="242">
+          <caret line="11" column="32" selection-start-line="10" selection-start-column="19" selection-end-line="11" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="132" column="87" selection-start-line="132" selection-start-column="87" selection-end-line="132" selection-end-column="87" />
+        <state relative-caret-position="583">
+          <caret line="172" column="47" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#793#828#0" expanded="false" />
-            <element signature="e#7236#7283#0" expanded="false" />
-            <element signature="e#7739#7754#0" expanded="false" />
+            <element signature="e#7136#7183#0" expanded="false" />
+            <element signature="e#7639#7654#0" expanded="false" />
           </folding>
         </state>
       </provider>
