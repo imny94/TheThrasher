@@ -4,16 +4,21 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 
+import weka.classifiers.Classifier;
+import weka.classifiers.lazy.IBk;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
-import wlsvm.WLSVM;
 
 //implements weka.classifiers.UpdateableClassifier
 
@@ -22,7 +27,8 @@ public class DynamicBinFilledClassifier {
     FileWriter fw = null;
     BufferedWriter bw = null;
     PrintWriter out = null;
-    WLSVM svmCls;
+    //WLSVM svmCls;
+    Classifier ibk;
 
 //    DynamicBinFilledClassifier(){
 //
@@ -32,10 +38,23 @@ public class DynamicBinFilledClassifier {
 		The function createNewModel creates a new file for the training model.
 		It will require all the relevant attributes as arguments for the function
 		to create the first results in the file
+
+		@param The filename must include the root folder if the weka lib is in a different folder from
+		this class, and it should not include .arff extension as the .arff extension is added within the file
+		future improvements might include support for filenames with or without .arff extensions
+
+		Returns "ERROR" if unsuccessful and "SUCCESS" if update completes
 	*/
 
-    public void createNewModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
+    public String createNewModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
                                Double sonar4,Double sonar5,Double sonar6, String classification){
+
+        if(new File(fileName+".arff").isFile()){
+            System.out.println("The file already exists! Consider updating the model instead. " +
+                            "\nUnless you want to overwrite data, please delete or change location/filename of existing file");
+            return "ERROR";
+        }
+
         // Declare the numeric weight and sonar attributes
         Attribute Attribute1 = new Attribute("weight"); // weight is in grams
         Attribute Attribute2 = new Attribute("sonar1"); // sonar readings is in metres
@@ -85,11 +104,33 @@ public class DynamicBinFilledClassifier {
 
         // Add the Instance
         trainingSet.add(iClassify);
+//        System.out.println(trainingSet);
+
+//        try{
+//            PrintWriter writer = new PrintWriter(fileName+".arff", "UTF-8");
+//            writer.print(trainingSet);
+//            writer.close();
+//        } catch (IOException e) {
+//            // do something
+//        }
+
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(fileName+".arff"), "utf-8"))) {
+            writer.write(String.valueOf(trainingSet));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try {
-            svmCls = new WLSVM();
-            svmCls.buildClassifier(trainingSet);
-            weka.core.SerializationHelper.write("svmBinTrainedModel", svmCls); // Stores trained model as "svmBinTrainedModel"
+//            svmCls = new WLSVM();
+//            svmCls.buildClassifier(trainingSet);
+            ibk = new IBk();
+            ibk.buildClassifier(trainingSet);
+            weka.core.SerializationHelper.write("classifier2/src/main/java/com/example/svmBinTrainedModel", ibk);//svmCls); // Stores trained model as "svmBinTrainedModel"
             // To load, use   WLSVM svmCls = (WLSVM) weka.core.SerializationHelper.read("svmTrainedModel");
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,31 +138,60 @@ public class DynamicBinFilledClassifier {
             e.printStackTrace();
         }
 
+        return "SUCCESS";
+
     }
 
-    public void updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
+    /*
+
+        Returns "ERROR" if unsuccessful and "SUCCESS" if update completes
+
+     */
+
+    public String updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
                             Double sonar4,Double sonar5,Double sonar6, String classification){
+        if(!new File(fileName+".arff").isFile()){
+            System.out.println("No such file found, check for location or misspelling of filename");
+            return "ERROR";
+        }
         String toAdd = String.format("%f,%f,%f,%f,%f,%f,%f,%s",weight,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,classification);
+        System.out.println(toAdd);
         try{
-            fw = new FileWriter(fileName,true);
+            fw = new FileWriter(fileName+".arff",true);
             bw = new BufferedWriter(fw);
-            out = new PrintWriter(bw);
-            out.println(toAdd);
+            fw.write("\n"+toAdd);
             fw.close();
-            File f = new File(fileName);
+            File f = new File(fileName+".arff");
             BufferedReader inputReader;
             inputReader = readFile(f);
             Instances data;
 
-            data=new Instances(inputReader);
-            data.setClassIndex(data.numAttributes()-1);
-            svmCls = new WLSVM();
-            svmCls.buildClassifier(data);
-            weka.core.SerializationHelper.write("svmBinTrainedModel", svmCls);
+            try {
+                data = new Instances(inputReader);
+                data.setClassIndex(data.numAttributes()-1);
+                ibk = new IBk();
+                ibk.buildClassifier(data);
+                weka.core.SerializationHelper.write("classifier2/src/main/java/com/example/svmBinTrainedModel", ibk);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+//            data= new Instances(inputReader);
+//            int numAttributes = data.numAttributes();
+//            data.setClassIndex(numAttributes-1);
+////            svmCls = new WLSVM();
+////            svmCls.buildClassifier(data);
+//            ibk = new IBk();
+//            ibk.buildClassifier(data);
+//            weka.core.SerializationHelper.write("svmBinTrainedModel", ibk);//svmCls);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return "SUCCESS";
 
 //    @Override
 //    public void updateClassifier(Instance instance) throws Exception {
