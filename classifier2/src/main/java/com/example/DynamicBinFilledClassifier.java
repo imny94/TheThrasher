@@ -43,16 +43,16 @@ public class DynamicBinFilledClassifier {
 		this class, and it should not include .arff extension as the .arff extension is added within the file
 		future improvements might include support for filenames with or without .arff extensions
 
-		Returns "ERROR" if unsuccessful and "SUCCESS" if update completes
+		Returns null if unsuccessful and model if update completes
 	*/
 
-    public String createNewModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
+    public Classifier createNewModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
                                Double sonar4,Double sonar5,Double sonar6, String classification){
 
         if(new File(fileName+".arff").isFile()){
             System.out.println("The file already exists! Consider updating the model instead. " +
                             "\nUnless you want to overwrite data, please delete or change location/filename of existing file");
-            return "ERROR";
+            return null;
         }
 
         // Declare the numeric weight and sonar attributes
@@ -138,21 +138,21 @@ public class DynamicBinFilledClassifier {
             e.printStackTrace();
         }
 
-        return "SUCCESS";
+        return ibk;
 
     }
 
     /*
 
-        Returns "ERROR" if unsuccessful and "SUCCESS" if update completes
+        Returns null if unsuccessful and ibk if update completes
 
      */
 
-    public String updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
+    public Classifier updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
                             Double sonar4,Double sonar5,Double sonar6, String classification){
         if(!new File(fileName+".arff").isFile()){
             System.out.println("No such file found, check for location or misspelling of filename");
-            return "ERROR";
+            return null;
         }
         String toAdd = String.format("%f,%f,%f,%f,%f,%f,%f,%s",weight,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,classification);
         System.out.println(toAdd);
@@ -191,7 +191,7 @@ public class DynamicBinFilledClassifier {
             e.printStackTrace();
         }
 
-        return "SUCCESS";
+        return ibk;
 
 //    @Override
 //    public void updateClassifier(Instance instance) throws Exception {
@@ -220,33 +220,34 @@ public class DynamicBinFilledClassifier {
     }
 
 
-    /*
-    This function will take in a set of instances, i.e. Many instance of different objects,
-    and return the classification of each of this instances in an array, with a value assigned to
-    the order of the classification defined in the arff file used for training.
-    The ordering for the array will be the same as the ordr in which the instances are added into the Instances dataSet.
-     */
-    public double[] classify(Instances instances){
-        double[] toReturn = new double[instances.numInstances()];
-        for(int i =0;i<instances.numInstances();i++){
-            try {
-                toReturn[i] = ibk.classifyInstance(instances.instance(i));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return toReturn;
-
-    }
-
-    /*
-    This function will be called if we are only classifying 1 instance, and not a set of instances
-     */
-    public double classify(Instance instance){
-        try {
-            return ibk.classifyInstance(instance);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    /*
+//    This function will take in a set of instances, i.e. Many instance of different objects,
+//    and return the classification of each of this instances in an array, with a value assigned to
+//    the order of the classification defined in the arff file used for training.
+//    The ordering for the array will be the same as the ordr in which the instances are added into the Instances dataSet.
+//     */
+//    public double[] classify(Instances instances){
+//        double[] toReturn = new double[instances.numInstances()];
+//        for(int i =0;i<instances.numInstances();i++){
+//            try {
+//                toReturn[i] = ibk.classifyInstance(instances.instance(i));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return toReturn;
+//
+//    }
+//
+//    /*
+//    This function will be called if we are only classifying 1 instance, and not a set of instances
+//     */
+//    public double classify(Instance instance){
+//        try {
+//            return ibk.classifyInstance(instance);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return 0;
+//        }
+//    }
 }
