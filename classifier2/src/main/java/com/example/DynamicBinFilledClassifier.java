@@ -218,4 +218,35 @@ public class DynamicBinFilledClassifier {
         }
         return null;
     }
+
+
+    /*
+    This function will take in a set of instances, i.e. Many instance of different objects,
+    and return the classification of each of this instances in an array, with a value assigned to
+    the order of the classification defined in the arff file used for training.
+    The ordering for the array will be the same as the ordr in which the instances are added into the Instances dataSet.
+     */
+    public double[] classify(Instances instances){
+        double[] toReturn = new double[instances.numInstances()];
+        for(int i =0;i<instances.numInstances();i++){
+            try {
+                toReturn[i] = ibk.classifyInstance(instances.instance(i));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return toReturn;
+
+    }
+
+    /*
+    This function will be called if we are only classifying 1 instance, and not a set of instances
+     */
+    public double classify(Instance instance){
+        try {
+            return ibk.classifyInstance(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
