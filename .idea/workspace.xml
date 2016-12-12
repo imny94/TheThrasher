@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e586d758-61ba-4c6d-88a3-418955ee6f36" name="Default" comment="" />
+=======
+    <list default="true" id="e586d758-61ba-4c6d-88a3-418955ee6f36" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java" afterPath="$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java" />
+    </list>
+>>>>>>> parent of 387879e... Commented out previous commit, as it would be better to implement classification logic in main function. Therefore, to support this function, createModel and updateModel changed to return the trained model if the build/update is successful, null if otherwise
     <ignored path="1D_Project.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/classifier/.gradle/" />
@@ -40,7 +47,26 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="DynamicBinFilledClassifier.java" pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/ClassifierProject/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java">
+=======
+        <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="666">
+              <caret line="248" column="12" selection-start-line="248" selection-start-column="12" selection-end-line="248" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#793#828#0" expanded="false" />
+                <element signature="e#7136#7183#0" expanded="false" />
+                <element signature="e#7639#7654#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testClassifier.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/testClassifier.java">
+>>>>>>> parent of 387879e... Commented out previous commit, as it would be better to implement classification logic in main function. Therefore, to support this function, createModel and updateModel changed to return the trained model if the build/update is successful, null if otherwise
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-220">
               <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
@@ -1117,6 +1143,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding />
         </state>
       </provider>
@@ -1134,6 +1161,14 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+=======
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#793#828#0" expanded="false" />
+            <element signature="e#7136#7183#0" expanded="false" />
+            <element signature="e#7639#7654#0" expanded="false" />
+          </folding>
+>>>>>>> parent of 387879e... Commented out previous commit, as it would be better to implement classification logic in main function. Therefore, to support this function, createModel and updateModel changed to return the trained model if the build/update is successful, null if otherwise
         </state>
       </provider>
     </entry>
@@ -1183,6 +1218,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classifier2/src/main/java/com/example/DynamicBinFilledClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="4334">
           <caret line="222" column="0" selection-start-line="222" selection-start-column="2" selection-end-line="251" selection-end-column="7" />
           <folding />
@@ -1194,6 +1230,16 @@
         <state relative-caret-position="-220">
           <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
+=======
+        <state relative-caret-position="666">
+          <caret line="248" column="12" selection-start-line="248" selection-start-column="12" selection-end-line="248" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#793#828#0" expanded="false" />
+            <element signature="e#7136#7183#0" expanded="false" />
+            <element signature="e#7639#7654#0" expanded="false" />
+          </folding>
+>>>>>>> parent of 387879e... Commented out previous commit, as it would be better to implement classification logic in main function. Therefore, to support this function, createModel and updateModel changed to return the trained model if the build/update is successful, null if otherwise
         </state>
       </provider>
     </entry>

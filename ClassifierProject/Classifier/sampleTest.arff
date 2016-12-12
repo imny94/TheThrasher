@@ -1,0 +1,14 @@
+@relation Rel
+
+@attribute weight numeric
+@attribute sonar1 numeric
+@attribute sonar2 numeric
+@attribute sonar3 numeric
+@attribute sonar4 numeric
+@attribute sonar5 numeric
+@attribute sonar6 numeric
+@attribute binStatus {Overflowing,75pFilled,50pFilled,25pFilled,Empty}
+
+@data
+500,0.5,0.5,0.5,0.5,0.5,0.5,50pFilled
+500.000000,0.500000,0.500000,0.500000,0.500000,0.500000,0.500000,50pFilled
