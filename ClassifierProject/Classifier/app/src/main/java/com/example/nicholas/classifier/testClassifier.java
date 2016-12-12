@@ -1,11 +1,15 @@
 package com.example.nicholas.classifier;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 /**
  * Created by nicholas on 12-Dec-16.
  */
 
 public class testClassifier {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void main(String[]args){
         DynamicBinFilledClassifier testClass = new DynamicBinFilledClassifier();
         System.out.println("Creating model...");
