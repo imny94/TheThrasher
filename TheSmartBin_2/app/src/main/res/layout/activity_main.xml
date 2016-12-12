@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="30dp"
+    tools:context="com.lejit.thesmartbin.MainActivity"
+    android:background="@color/white"
+    android:paddingStart="20dp"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="277dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        android:layout_weight="0.07"
+        android:id="@+id/logoImage"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:background="@color/verdigirs"
+        android:hint="@string/ID"
+        android:layout_marginTop = "50dp"
+        android:layout_below="@+id/logoImage"
+        android:textSize="25sp"
+        android:layout_alignParentStart = "true"
+        android:textColor="@color/white"
+        android:layout_alignParentEnd = "true"
+        android:textColorHighlight="@color/verdigirs"
+        android:textColorHint="@color/colorPrimary"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:background="@color/verdigirs"
+        android:hint="@string/passwordHint"
+        android:layout_marginTop = "20dp"
+        android:layout_below="@+id/login"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:layout_alignParentStart = "true"
+        android:layout_alignParentEnd = "true"
+        android:textColorHighlight="@color/verdigirs"
+        android:textColorHint="@color/colorPrimary"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:text="@string/management"
+        android:textColor="@color/white"
+        android:background="@color/nicegreen"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/managementbutton"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ground"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/white"
+        android:background="@color/nicegreen"
+        android:textSize="20sp"
+        android:id="@+id/groundstaff"
+        android:layout_alignTop="@+id/managementbutton"
+        android:layout_toEndOf="@+id/managementbutton" />
+
+
+
+</RelativeLayout>
+
