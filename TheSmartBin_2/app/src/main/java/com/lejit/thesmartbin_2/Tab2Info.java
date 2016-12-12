@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
@@ -45,8 +47,11 @@ public class Tab2Info extends Fragment {
                 if(text=="25%"||text=="50%"||text=="75%"){
                     text=Character.toString(text.charAt(0))+Character.toString(text.charAt(1))+"pFilled";
                 }
-                Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com");
-                myFirebaseRef.child("Blk 1 Lvel 3").setValue(text);
+                Long tsLong = System.currentTimeMillis()/1000;
+                String ts = tsLong.toString();
+                Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
+                myFirebaseRef.child("sonar").setValue(text);
+
 
             }
         });
