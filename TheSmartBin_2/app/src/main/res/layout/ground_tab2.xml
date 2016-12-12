@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
 <ImageView
+    android:paddingTop="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:src="@drawable/bin_pic1"/>
@@ -21,19 +22,20 @@
            android:textStyle="bold"
            android:textSize="20sp"
            android:paddingStart="@dimen/activity_horizontal_margin"/>
-       <EditText
-           android:layout_marginTop="20dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="FULL"
-           android:layout_marginLeft="@dimen/activity_horizontal_margin"
-           android:layout_alignParentTop="true"
-           android:layout_toEndOf="@+id/Bin_Status"
-           android:background="@color/nicegreen"
-           android:textColor="@color/white"
-           android:textSize="20sp"/>
 
    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FULL"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:textColor="@color/brown"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/Bin_Status"
+        android:layout_gravity="right" />
 
     <TextView
         android:paddingTop="20dp"
@@ -51,5 +53,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
-        android:id="@+id/spinner"></Spinner>
+        android:id="@+id/spinner"
+        android:paddingBottom="25dp"></Spinner>
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Submit"/>
 </LinearLayout>

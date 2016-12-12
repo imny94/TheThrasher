@@ -11,6 +11,13 @@
     <string name="BinInfo4">Building 2 Level 1 (Campus Centre Lift Lobby)</string>
     <string name="BinInfo5">Building 2 Level 4 (Outside Digital Systems Lab)</string>
     <string name="BinInfo6">Building 5 Level 1 (Outside FAB Lab Level 1)</string>
+    <string name="BinInfo7">Building 3 Level 1 (Lift Lobby)</string>
+    <string name="BinInfo8">Building 3 Level 2 (Lift Lobby)</string>
+    <string name="BinInfo9">Building 3 Level 3 (Lift Lobby)</string>
+    <string name="BinInfo10">Building 3 Level 4 (Lift Lobby)</string>
+    <string name="BinInfo11">Building 3 Level 5 (Lift Lobby)</string>
+    <string name="BinInfo12">Bulding 3 Level 6 (Lift Lobby)</string>
+    <string name="BinInfo13">Building 3 Level 7 (Lift Lobby)</string>
     <string name="BinStatus">Status of Bin: </string>
     <string name="staffReport">Staff Report</string>
     <string name="Button1">Empty</string>

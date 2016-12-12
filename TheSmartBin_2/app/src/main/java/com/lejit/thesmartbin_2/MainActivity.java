@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("hi");
+
 
         groundbutton=(Button)findViewById(R.id.groundstaff);
         managebutton=(Button)findViewById(R.id.managementbutton);

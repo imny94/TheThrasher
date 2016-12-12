@@ -26,6 +26,7 @@
         android:id="@+id/login"
         android:background="@color/verdigirs"
         android:hint="@string/ID"
+        android:inputType="textPassword"
         android:layout_marginTop = "50dp"
         android:layout_below="@+id/logoImage"
         android:textSize="25sp"
