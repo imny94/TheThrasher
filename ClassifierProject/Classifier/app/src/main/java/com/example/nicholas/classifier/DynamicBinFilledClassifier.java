@@ -123,7 +123,7 @@ public class DynamicBinFilledClassifier {
 //        }
 
         try(Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName+".arff"), "utf-8"));) {
+                new FileOutputStream(fileName+".arff"), "utf-8"))) {
             writer.write(String.valueOf(trainingSet));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
