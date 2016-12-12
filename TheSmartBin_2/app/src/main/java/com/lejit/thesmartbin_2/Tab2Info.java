@@ -41,7 +41,7 @@ public class Tab2Info extends Fragment {
                     text=Character.toString(text.charAt(0))+Character.toString(text.charAt(1))+"pFilled";
                 }
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com");
-                myFirebaseRef.child("message").setValue(text);
+                myFirebaseRef.child("Blk 1 Lvel 3").setValue(text);
 
 
                 if(new File(fileName+".arff").isFile()){
