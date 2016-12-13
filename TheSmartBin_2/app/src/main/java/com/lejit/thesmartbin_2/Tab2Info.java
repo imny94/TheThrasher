@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.firebase.client.Firebase;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,97 +56,21 @@ public class Tab2Info extends Fragment {
     Double sonar6;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("Blk 1 Lvl 3 test/latestTimeStamp");
-        ref.orderByChild("latestTimeStamp").equalTo("latestTimeStamp").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-                latestTimeStamp = dataSnapshot.getValue(String.class);
 
-            }
-
-            @Override
-            public void onChildChanged(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-                latestTimeStamp = dataSnapshot.getValue(String.class);
-
-            }
-
-            @Override
-            public void onChildRemoved(com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        }) ;
-
-//                ref.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                        latestTimeStamp = dataSnapshot.getValue(String.class);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        System.out.println("The read failed: " + databaseError.getCode());
-//                    }
-//                });
-//                //ToDO: Change the child name to the agreed upon file name later
-////                final Firebase latestTimeStamp = myFirebaseRef.child("Blk 1 Lvl 3/latestTimeStamp");
-////                latestTimeStamp.addChildEventListener(new ChildEventListener() {
-////                    @Override
-////                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-////                       String latestTimeStamp = dataSnapshot.getValue(String.class);
-////                    }
-////
-////                    @Override
-////                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-////                        String latestTimeStamp = dataSnapshot.getValue(String.class);
-////                    }
-////
-////                    @Override
-////                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-////
-////                    }
-////
-////                    @Override
-////                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-////
-////                    }
-////
-////                    @Override
-////                    public void onCancelled(FirebaseError firebaseError) {
-////
-////                    }
-////                });
-
-//                final Firebase dataFromBin = myFirebaseRef.child("Blk 1 lvl 3/"+latestTimeStamp);
-        System.out.println(latestTimeStamp);
-        latestTimeStamp = "11-12-2016-11:50:00";
-        final DatabaseReference dataRef = database.getReference("Blk 1 Lvl 3 test/"+latestTimeStamp);
-        ValueEventListener valueEventListener = dataRef.addValueEventListener(new ValueEventListener() {
+        final DatabaseReference timeStampRef = database.getReference("Blk 1 Lvl 3 test");
+        timeStampRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Query query = dataRef.orderByKey().endAt("value");
-                query.addValueEventListener(new ValueEventListener() {
+                Query timeStampQuery = timeStampRef.orderByKey().startAt("l").endAt("lastTimeStamp");
+                timeStampQuery.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        System.out.println(dataSnapshot);
-                        Map<String, Double> dataMap = (Map<String, Double>) dataSnapshot.getValue();                        System.out.println(dataMap.toString());
-                        pressure = dataMap.get("value");
-                        sonar1 = dataMap.get("sonar1");
-                        sonar2 = dataMap.get("sonar2");
-                        sonar3 = dataMap.get("sonar3");
-                        sonar4 = dataMap.get("sonar4");
-                        sonar5 = dataMap.get("sonar5");
-                        sonar6 = dataMap.get("sonar6");
+                        Map<String,String> timeStampMap = (Map<String, String>) dataSnapshot.getValue();
+                        latestTimeStamp = timeStampMap.get("lastTimeStamp");
+                        System.out.println(latestTimeStamp);
                     }
 
                     @Override
@@ -162,25 +85,6 @@ public class Tab2Info extends Fragment {
 
             }
         });
-//                dataFromBin.addValueEventListener(new com.firebase.client.ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        Map<String,Double> dataMap = dataSnapshot.getValue(Map.class);
-//                        pressure = dataMap.get("value");
-//                        sonar1 = dataMap.get("sonar1");
-//                        sonar2 = dataMap.get("sonar2");
-//                        sonar3 = dataMap.get("sonar3");
-//                        sonar4 = dataMap.get("sonar4");
-//                        sonar5 = dataMap.get("sonar5");
-//                        sonar6 = dataMap.get("sonar6");
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(FirebaseError firebaseError) {
-//
-//                    }
-//                });
-
 
 
         View rootView = inflater.inflate(R.layout.ground_tab2, container, false);
@@ -206,7 +110,38 @@ public class Tab2Info extends Fragment {
 
 
 
-//                System.out.println("lastTimeStamp is :" + latestTimeStamp);
+                final DatabaseReference dataRef = database.getReference("Blk 1 Lvl 3 test/"+latestTimeStamp);
+                ValueEventListener valueEventListener = dataRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Query query = dataRef.orderByKey().endAt("value");
+                        query.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                System.out.println(dataSnapshot);
+                                Map<String, Double> dataMap = (Map<String, Double>) dataSnapshot.getValue();
+                                System.out.println(dataMap.toString());
+                                pressure = dataMap.get("value");
+                                sonar1 = dataMap.get("sonar1");
+                                sonar2 = dataMap.get("sonar2");
+                                sonar3 = dataMap.get("sonar3");
+                                sonar4 = dataMap.get("sonar4");
+                                sonar5 = dataMap.get("sonar5");
+                                sonar6 = dataMap.get("sonar6");
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 //                DynamicBinFilledClassifier binClassifier = new DynamicBinFilledClassifier();
 //                if(new File(fileName+".arff").isFile()){
 //                    // File already exists, so use update method
