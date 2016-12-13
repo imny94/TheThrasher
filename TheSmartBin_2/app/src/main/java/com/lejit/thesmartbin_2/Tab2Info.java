@@ -6,16 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -115,16 +105,16 @@ public class Tab2Info extends Fragment {
                 if(text=="25%"||text=="50%"||text=="75%"){
                     text=Character.toString(text.charAt(0))+Character.toString(text.charAt(1))+"pFilled";
                 }
-<<<<<<< HEAD
+
                 Long tsLong = System.currentTimeMillis()/1000;
                 String ts = tsLong.toString();
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
                 myFirebaseRef.child("sonar").setValue(text);
 
-=======
-                Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com");
-                myFirebaseRef.child("Blk 1 Lvl 3 test/classification").setValue(text);
->>>>>>> aa43af0c0fab3be2b84e4398ee34c5f9531d71a6
+
+                Firebase myFirebaseRefTest=new Firebase("https://smartbin-16031.firebaseio.com");
+                myFirebaseRefTest.child("Blk 1 Lvl 3 test/classification").setValue(text);
+
 
 
 
