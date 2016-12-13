@@ -62,6 +62,7 @@ public class DynamicBinFilledClassifier {
                     "\nUnless you want to overwrite data, please delete or change location/filename of existing file");
             return null;
         }
+        System.out.println("Entered createNewModel Class \n"+fileName+"\n weight is:" + weight);
 
         // Declare the numeric weight and sonar attributes
         Attribute Attribute1 = new Attribute("weight"); // weight is in grams
