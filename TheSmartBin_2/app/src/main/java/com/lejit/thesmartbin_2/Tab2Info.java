@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +14,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
+
+import java.io.File;
 
 /**
  * Created by MY LENOVO on 12/12/2016.
@@ -27,6 +29,7 @@ import com.firebase.client.FirebaseError;
 
 public class Tab2Info extends Fragment {
     Button submit;
+    String fileName = "classifierData";
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.ground_tab2, container, false);
@@ -52,6 +55,15 @@ public class Tab2Info extends Fragment {
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
                 myFirebaseRef.child("sonar").setValue(text);
 
+
+
+                if(new File(fileName+".arff").isFile()){
+                    // File already exists, so use update method
+
+                }
+                else {
+                    // File does not exist, so re-create new file
+                }
 
             }
         });
