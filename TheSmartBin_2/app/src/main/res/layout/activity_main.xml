@@ -19,7 +19,8 @@
         android:src="@drawable/logo"
         android:layout_weight="0.07"
         android:id="@+id/logoImage"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignEnd="@+id/login"
+        android:layout_alignParentStart="true" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
         android:inputType="textPassword"
         android:background="@color/verdigirs"
         android:hint="@string/passwordHint"
-        android:layout_marginTop = "20dp"
+        android:layout_marginTop = "30dp"
         android:layout_below="@+id/login"
         android:textSize="25sp"
         android:textColor="@color/white"
@@ -50,27 +51,20 @@
         android:layout_alignParentEnd = "true"
         android:textColorHighlight="@color/verdigirs"
         android:textColorHint="@color/colorPrimary"/>
+
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:text="@string/management"
-        android:textColor="@color/white"
-        android:background="@color/nicegreen"
-        android:textSize="20sp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/managementbutton"/>
-    <Button
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ground"
-        android:layout_marginLeft="30dp"
+
         android:textColor="@color/white"
         android:background="@color/nicegreen"
         android:textSize="20sp"
         android:id="@+id/groundstaff"
-        android:layout_alignTop="@+id/managementbutton"
-        android:layout_toEndOf="@+id/managementbutton" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/password"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentStart="true" />
 
 
 

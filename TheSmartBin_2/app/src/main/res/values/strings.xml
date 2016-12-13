@@ -3,7 +3,7 @@
     <string name="ID">Enter Login ID</string>
     <string name="passwordHint">Enter Password</string>
     <string name="management">Management</string>
-    <string name="ground">On-ground</string>
+    <string name="ground">LOGIN</string>
     <string name="groundText">Bin Tracker</string>
     <string name="BinInfo1">Building 1 Level 1(Lift Lobby)</string>
     <string name="BinInfo2">Building 1 Level 5 (Oustide C06)</string>
@@ -32,5 +32,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="bin_locator">Location of Bin: Building 1 Level 3</string>
+
 
 </resources>

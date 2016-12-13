@@ -32,12 +32,56 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
+    <com.sa90.materialarcmenu.ArcMenu
+        android:id="@+id/arcmenu_android_example_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu_color="@color/nicegreen"
+        app:menu_open="arc_right"
+        android:layout_gravity="bottom"
+        android:layout_marginRight="300dp"
+        app:menu_scr="@drawable/leaf_min">
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_arc_menu_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logout"
+            app:backgroundTint="@color/nicegreen" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_arc_menu_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/analytics"
+            app:backgroundTint="@color/nicegreen" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_arc_menu_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/user_profile"
+            app:backgroundTint="@color/nicegreen" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_arc_menu_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/info"
+            app:backgroundTint="@color/nicegreen" />
+
+    </com.sa90.materialarcmenu.ArcMenu>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

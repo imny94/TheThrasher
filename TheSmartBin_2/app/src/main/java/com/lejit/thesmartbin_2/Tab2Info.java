@@ -54,6 +54,7 @@ public class Tab2Info extends Fragment {
     Double sonar4;
     Double sonar5;
     Double sonar6;
+    double DataInfo;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -103,13 +104,21 @@ public class Tab2Info extends Fragment {
 
                 String text = spinner.getSelectedItem().toString();
                 if(text=="25%"||text=="50%"||text=="75%"){
-                    text=Character.toString(text.charAt(0))+Character.toString(text.charAt(1))+"pFilled";
+                    text=text.substring(0,1);
+                    DataInfo=(Double.parseDouble(text))/100.00;
+
+                }
+                if(text=="Full"){
+                    DataInfo=1.00;
+                }
+                if(text=="Empty"){
+                    DataInfo=0.00;
                 }
 
                 Long tsLong = System.currentTimeMillis()/1000;
                 String ts = tsLong.toString();
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
-                myFirebaseRef.child("sonar").setValue(text);
+                myFirebaseRef.child(ts).setValue(text);
 
 
                 Firebase myFirebaseRefTest=new Firebase("https://smartbin-16031.firebaseio.com");
@@ -235,13 +244,13 @@ public class Tab2Info extends Fragment {
         trainingSet.add(iClassify);
         System.out.println(String.valueOf(trainingSet));
 
-//        try{
-//            PrintWriter writer = new PrintWriter(fileName+".arff", "UTF-8");
-//            writer.print(trainingSet);
-//            writer.close();
-//        } catch (IOException e) {
-//            // do something
-//        }
+        try{
+            PrintWriter writer = new PrintWriter(fileName+".arff", "UTF-8");
+            writer.print(trainingSet);
+            writer.close();
+        } catch (IOException e) {
+            // do something
+        }
         File file = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), fileName+".arff");
 
@@ -309,14 +318,14 @@ public class Tab2Info extends Fragment {
                 e.printStackTrace();
             }
 
-//            data= new Instances(inputReader);
-//            int numAttributes = data.numAttributes();
-//            data.setClassIndex(numAttributes-1);
-////            svmCls = new WLSVM();
-////            svmCls.buildClassifier(data);
-//            ibk = new IBk();
-//            ibk.buildClassifier(data);
-//            weka.core.SerializationHelper.write("svmBinTrainedModel", ibk);//svmCls);
+            data= new Instances(inputReader);
+            int numAttributes = data.numAttributes();
+            data.setClassIndex(numAttributes-1);
+//            svmCls = new WLSVM();
+//            svmCls.buildClassifier(data);
+            ibk = new IBk();
+            ibk.buildClassifier(data);
+            weka.core.SerializationHelper.write("svmBinTrainedModel", ibk);//svmCls);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -339,7 +348,7 @@ public class Tab2Info extends Fragment {
 //        while ((current = loader.getNextInstance(structure)) != null)
 //            nb.updateClassifier(current);
 //    }
-    }
+   }
 
     private BufferedReader readFile(File f) {
         try {

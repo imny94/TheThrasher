@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button managebutton;
+
     private Button groundbutton;
     private EditText ID;
     private EditText password;
@@ -22,14 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         groundbutton=(Button)findViewById(R.id.groundstaff);
-        managebutton=(Button)findViewById(R.id.managementbutton);
-        managebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent manage =new Intent(MainActivity.this,ManagementActivity.class);
-                MainActivity.this.startActivity(manage);
-            }
-        });
+
         groundbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

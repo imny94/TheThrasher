@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/bin_pic1"/>
+        android:src="@drawable/bin_pic1"
+        android:id="@+id/binImage"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/brown"
+        android:text="@string/bin_locator"
+        android:layout_below="@id/binImage"
+        android:paddingStart="120dp"
+        android:layout_marginTop="30dp"
+        />
 
-</LinearLayout>
+</RelativeLayout>
