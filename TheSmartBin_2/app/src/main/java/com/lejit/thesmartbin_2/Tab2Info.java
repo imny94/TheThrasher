@@ -10,6 +10,36 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.firebase.client.Firebase;
+//<<<<<<< HEAD
+//=======
+//import com.google.firebase.database.DataSnapshot;
+//import com.google.firebase.database.DatabaseError;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.Query;
+//import com.google.firebase.database.ValueEventListener;
+
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.IOException;
+//import java.io.OutputStreamWriter;
+//import java.io.PrintWriter;
+//import java.io.UnsupportedEncodingException;
+//import java.io.Writer;
+//import java.util.Map;
+//
+//import weka.classifiers.Classifier;
+//import weka.classifiers.lazy.IBk;
+//import weka.core.Attribute;
+//import weka.core.FastVector;
+//import weka.core.Instance;
+//import weka.core.Instances;
+//>>>>>>> b47c5f3edbed7b0a4c84880d3700bc3788acde91
 
 /**
  * Created by MY LENOVO on 12/12/2016.
@@ -131,6 +161,19 @@ public class Tab2Info extends Fragment {
 //
 //                    }
 //                });
+//<<<<<<< HEAD
+////                DynamicBinFilledClassifier binClassifier = new DynamicBinFilledClassifier();
+////                if(new File(fileName+".arff").isFile()){
+////                    // File already exists, so use update method
+////                    System.out.println("Updating model...");
+////                    updateModel(fileName,pressure,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,text);
+////                }
+////                else {
+//////                    // File does not exist, so re-create new file
+//////                    System.out.println("Creating model...");
+//////                    createNewModel(fileName,pressure,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,text);
+//////                }
+//=======
 ////                DynamicBinFilledClassifier binClassifier = new DynamicBinFilledClassifier();
 ////                if(new File(fileName+".arff").isFile()){
 ////                    // File already exists, so use update method
@@ -142,6 +185,7 @@ public class Tab2Info extends Fragment {
 ////                    System.out.println("Creating model...");
 ////                    createNewModel(fileName,pressure,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,text);
 ////                }
+//>>>>>>> b47c5f3edbed7b0a4c84880d3700bc3788acde91
 
             }
         });
@@ -236,10 +280,17 @@ public class Tab2Info extends Fragment {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+//<<<<<<< HEAD
 //
 //        try {
 ////            svmCls = new WLSVM();
 ////            svmCls.buildClassifier(trainingSet);
+//=======
+//
+////        try {
+////            svmCls = new WLSVM();
+////            svmCls.buildClassifier(trainingSet);
+//>>>>>>> b47c5f3edbed7b0a4c84880d3700bc3788acde91
 //            ibk = new IBk();
 //            ibk.buildClassifier(trainingSet);
 //            weka.core.SerializationHelper.write(fileName, ibk);//svmCls); // Stores trained model as "svmBinTrainedModel"
@@ -304,6 +355,7 @@ public class Tab2Info extends Fragment {
 //        }
 //
 //        return ibk;
+//<<<<<<< HEAD
 //
 ////    @Override
 ////    public void updateClassifier(Instance instance) throws Exception {
@@ -330,8 +382,36 @@ public class Tab2Info extends Fragment {
 //        }
 //        return null;
 //    }
+//=======
 
-
+//    @Override
+//    public void updateClassifier(Instance instance) throws Exception {
+//        // load data
+//        ArffLoader loader = new ArffLoader();
+//        loader.setFile(new File("/some/where/data.arff"));
+//        Instances structure = loader.getStructure();
+//        structure.setClassIndex(structure.numAttributes() - 1);
+//
+//        // train NaiveBayes
+//        NaiveBayesUpdateable nb = new NaiveBayesUpdateable();
+//        nb.buildClassifier(structure);
+//        Instance current;
+//        while ((current = loader.getNextInstance(structure)) != null)
+//            nb.updateClassifier(current);
+//    }
+//   }
+//
+//    private BufferedReader readFile(File f) {
+//        try {
+//            return new BufferedReader(new FileReader(f.toString()));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
     }
+//>>>>>>> b47c5f3edbed7b0a4c84880d3700bc3788acde91
+
+
+
 
 

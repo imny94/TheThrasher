@@ -1,5 +1,6 @@
 package com.lejit.thesmartbin_2;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,10 @@ import com.sa90.materialarcmenu.StateChangeListener;
 
 public class Main2Activity extends AppCompatActivity {
     ArcMenu arcMenuAndroid;
+    FloatingActionButton managementButton;
+    FloatingActionButton logout;
+    FloatingActionButton userProfile;
+    FloatingActionButton about;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -42,6 +47,38 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        FloatingActionButton managementButton=(FloatingActionButton)findViewById(R.id.fab_arc_menu_2);
+        managementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent management =new Intent(Main2Activity.this,ManagementActivity.class);
+                Main2Activity.this.startActivity(management);
+            }
+        });
+        FloatingActionButton logout=(FloatingActionButton)findViewById(R.id.fab_arc_menu_1);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logoutCall=new Intent(Main2Activity.this,MainActivity.class);
+                Main2Activity.this.startActivity(logoutCall);
+            }
+        });
+        FloatingActionButton userProfile=(FloatingActionButton)findViewById(R.id.fab_arc_menu_3);
+        userProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userpro=new Intent(Main2Activity.this,UserProfile.class);
+                Main2Activity.this.startActivity(userpro);
+            }
+        });
+        FloatingActionButton about=(FloatingActionButton)findViewById(R.id.fab_arc_menu_4);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aboutPage=new Intent(Main2Activity.this,About.class);
+                Main2Activity.this.startActivity(aboutPage);
+            }
+        });
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);

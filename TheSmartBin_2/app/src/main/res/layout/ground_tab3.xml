@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <ImageView
         android:layout_marginTop="50dp"
@@ -14,9 +15,27 @@
         android:layout_height="wrap_content"
         android:textColor="@color/brown"
         android:text="@string/bin_locator"
+        android:textStyle="bold"
+        android:textSize="30sp"
         android:layout_below="@id/binImage"
-        android:paddingStart="120dp"
+        android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bin_locator_info"
+        android:textColor="@color/verdigirs"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bin_locator_info_2"
+        android:textColor="@color/verdigirs"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
-</RelativeLayout>
+</LinearLayout>

@@ -8,8 +8,38 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.lejit.thesmartbin_2.ManagementActivity"
-    android:orientation="vertical">
+    tools:context="com.lejit.thesmartbin_2.UserProfile"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/UserProfile"
+        android:id="@+id/userTitle"
+        android:textColor="@color/brown"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:src="@drawable/user_profile"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/user_info"
+        android:layout_marginTop="20dp"/>
+
+
+
+    </LinearLayout>
     <com.sa90.materialarcmenu.ArcMenu
         android:id="@+id/arcmenu_android_example_layout"
         android:layout_width="wrap_content"
@@ -17,7 +47,7 @@
         android:layout_alignParentBottom="true"
         app:menu_color="@color/nicegreen"
         app:menu_open="arc_right"
-        android:layout_gravity="bottom"
+        android:layout_gravity="right"
         android:layout_marginRight="300dp"
         app:menu_scr="@drawable/leaf_min">
 
