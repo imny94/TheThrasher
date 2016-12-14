@@ -55,7 +55,7 @@ public class DynamicBinFilledClassifier {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Classifier createNewModel(String fileName, Double weight, Double sonar1, Double sonar2, Double sonar3,
-                                     Double sonar4, Double sonar5, Double sonar6, String classification){
+                                     Double sonar4, Double sonar5, Double sonar6, Double classification){
 
         if(new File(fileName+".arff").isFile()){
             System.out.println("The file already exists! Consider updating the model instead. " +
@@ -73,13 +73,13 @@ public class DynamicBinFilledClassifier {
         Attribute Attribute7 = new Attribute("sonar6");
 
         // Declare the class attribute along with its values
-        //   @ATTRIBUTE class        {Overflowing,75pFilled,50pFilled,25pFilled,Empty}
+        //   @ATTRIBUTE class      {1.00,0.75,0.50,0.25,0.00} == {Overflowing,75pFilled,50pFilled,25pFilled,Empty}
         FastVector fvClassVal = new FastVector(5);
-        fvClassVal.addElement("Overflowing");
-        fvClassVal.addElement("75pFilled");
-        fvClassVal.addElement("50pFilled");
-        fvClassVal.addElement("25pFilled");
-        fvClassVal.addElement("Empty");
+        fvClassVal.addElement(1.00);
+        fvClassVal.addElement(0.75);
+        fvClassVal.addElement(0.50);
+        fvClassVal.addElement(0.25);
+        fvClassVal.addElement(0.00);
         Attribute ClassAttribute = new Attribute("binStatus", fvClassVal);
 
         // Declare the feature vector template
@@ -157,12 +157,12 @@ public class DynamicBinFilledClassifier {
      */
 
     public Classifier updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
-                                  Double sonar4,Double sonar5,Double sonar6, String classification){
+                                  Double sonar4,Double sonar5,Double sonar6, Double classification){
         if(!new File(fileName+".arff").isFile()){
             System.out.println("No such file found, check for location or misspelling of filename");
             return null;
         }
-        String toAdd = String.format("%f,%f,%f,%f,%f,%f,%f,%s",weight,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,classification);
+        String toAdd = String.format("%f,%f,%f,%f,%f,%f,%f,%0.2f",weight,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,classification);
         System.out.println(toAdd);
         try{
             fw = new FileWriter(fileName+".arff",true);
@@ -225,6 +225,70 @@ public class DynamicBinFilledClassifier {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Instances createInstance(Double weight, Double sonar1, Double sonar2, Double sonar3, Double sonar4, Double sonar5, Double sonar6){
+
+        // Declare the numeric weight and sonar attributes
+        Attribute Attribute1 = new Attribute("weight"); // weight is in grams
+        Attribute Attribute2 = new Attribute("sonar1"); // sonar readings is in metres
+        Attribute Attribute3 = new Attribute("sonar2");
+        Attribute Attribute4 = new Attribute("sonar3");
+        Attribute Attribute5 = new Attribute("sonar4");
+        Attribute Attribute6 = new Attribute("sonar5");
+        Attribute Attribute7 = new Attribute("sonar6");
+
+// Declare the class attribute along with its values
+        //   @ATTRIBUTE class      {1.00,0.75,0.50,0.25,0.00} == {Overflowing,75pFilled,50pFilled,25pFilled,Empty}
+        FastVector fvClassVal = new FastVector(5);
+        fvClassVal.addElement(1.00);
+        fvClassVal.addElement(0.75);
+        fvClassVal.addElement(0.50);
+        fvClassVal.addElement(0.25);
+        fvClassVal.addElement(0.00);
+        Attribute ClassAttribute = new Attribute("binStatus", fvClassVal);
+
+// Declare the feature vector template
+        FastVector fvWekaAttributes = new FastVector(8);
+        fvWekaAttributes.addElement(Attribute1);
+        fvWekaAttributes.addElement(Attribute2);
+        fvWekaAttributes.addElement(Attribute3);
+        fvWekaAttributes.addElement(Attribute4);
+        fvWekaAttributes.addElement(Attribute5);
+        fvWekaAttributes.addElement(Attribute6);
+        fvWekaAttributes.addElement(Attribute7);
+        fvWekaAttributes.addElement(ClassAttribute);
+
+// Creating testing instances object with name "TestingInstance"
+// using the feature vector template we declared above
+// and with initial capacity of 1
+
+        Instances testingSet = new Instances("Rel", fvWekaAttributes, 1);
+
+// Setting the column containing class labels:
+        testingSet.setClassIndex(testingSet.numAttributes() - 1);
+
+// Create and fill an instance, and add it to the testingSet
+        Instance iExample = new Instance(testingSet.numAttributes());
+
+
+//        Double slValue = 4.7;
+//        Double swValue = 3.2;
+//        Double plValue = 1.6;
+//        Double pwValue = 1.4;
+
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(0), weight);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(1), sonar1);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(2), sonar2);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(3), sonar3);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(4), sonar4);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(5), sonar5);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(6), sonar6);
+        iExample.setValue((Attribute)fvWekaAttributes.elementAt(7), 0.00); // dummy
+
+// add the instance
+        testingSet.add(iExample);
+        return testingSet;
     }
 
 
