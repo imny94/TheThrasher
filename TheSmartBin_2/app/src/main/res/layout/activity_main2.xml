@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/white"
     tools:context="com.lejit.thesmartbin_2.Main2Activity">
 
     <android.support.design.widget.AppBarLayout
@@ -48,7 +49,7 @@
         app:menu_color="@color/nicegreen"
         app:menu_open="arc_right"
         android:layout_gravity="bottom"
-        android:layout_marginRight="300dp"
+        android:layout_marginRight="200dp"
         app:menu_scr="@drawable/leaf_min">
 
         <android.support.design.widget.FloatingActionButton
