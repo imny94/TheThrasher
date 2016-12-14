@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.firebase.client.Firebase;
@@ -57,6 +58,7 @@ public class Tab2Info extends Fragment {
     Double sonar5;
     Double sonar6;
     double DataInfo;
+    EditText edit;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -90,7 +92,7 @@ public class Tab2Info extends Fragment {
 //        });
 
 
-        View rootView = inflater.inflate(R.layout.ground_tab2, container, false);
+        final View rootView = inflater.inflate(R.layout.ground_tab2, container, false);
         final String [] values =
                 {"Select Bin Status","Empty","25%","50%","75%","Full",};
         final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
@@ -121,6 +123,8 @@ public class Tab2Info extends Fragment {
                 String ts = tsLong.toString();
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
                 myFirebaseRef.child(ts).setValue(text);
+                EditText edit=(EditText)rootView.findViewById(R.id.editor);
+                edit.setText(text);
 
 
 //                Firebase myFirebaseRefTest=new Firebase("https://smartbin-16031.firebaseio.com");

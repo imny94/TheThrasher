@@ -21,11 +21,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:text="50%"
+        android:textAlignment="center"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
         android:textColor="@color/brown"
         android:textSize="20sp"
+        android:id="@+id/editor"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/Bin_Status"
         android:layout_gravity="right" />
