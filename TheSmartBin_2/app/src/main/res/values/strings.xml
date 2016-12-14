@@ -32,7 +32,12 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="bin_locator">Location of Bin: Building 1 Level 3</string>
+    <string name="bin_locator">Location of Bin</string>
+    <string name="bin_locator_info">Building 1 Level 3 (Lift Lobby) </string>
+    <string name="bin_locator_info_2">Singapore University of Technology and Design</string>
+    <string name="AboutSmartBin">About The Smart Bin</string>
+    <string name="SmartBinInfo">The Smart Bin is a module designed to fit any available trash bin in the market. The module comes with a set of sonar sensors and load sensors. Both sensors work hand in hand to produce readings measure the amount of trash in a particular bin. Our classifier then classifies these readings into user-friendly data, such as degree of emptiness of such bins. With The Smart Bin, our users are now empowered analyse data collected from their networkof trash bins, and make wiser decisions with regards to resource allocation. The Smart Bin is in the frontier of waste management and we thank you for being a part of this journey.</string>
+    <string name="UserProfile">User Profile</string>
 
 
 </resources>
