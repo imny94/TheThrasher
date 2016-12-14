@@ -156,9 +156,7 @@ public class Main2Activity extends AppCompatActivity {
                 case 1:
                     Tab2Info tab2=new Tab2Info();
                     return tab2;
-                case 2:
-                    Tab3Info tab3=new Tab3Info();
-                    return tab3;
+
             }
             return null;
         }
@@ -166,7 +164,7 @@ public class Main2Activity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
