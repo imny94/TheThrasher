@@ -59,7 +59,24 @@ public class DynamicBinFilledClassifier {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Classifier createNewModel(String fileName, Double weight, Double sonar1, Double sonar2, Double sonar3,
-                                     Double sonar4, Double sonar5, Double sonar6, String classification){
+                                     Double sonar4, Double sonar5, Double sonar6, Double classificationVal){
+        String classification = "";
+
+        if(classificationVal==0.0){
+            classification = "Empty";
+        }
+        else if(classificationVal == 0.25){
+            classification = "25pFilled";
+        }
+        else if(classificationVal==0.50){
+            classification = "50pFilled";
+        }
+        else if(classificationVal==0.75){
+            classification = "75pFilled";
+        }
+        else if(classificationVal==1.0){
+            classification = "Full";
+        }
 
         if(new File(fileName+".arff").isFile()){
             System.out.println("The file already exists! Consider updating the model instead. " +
@@ -161,11 +178,30 @@ public class DynamicBinFilledClassifier {
      */
 
     public Classifier updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
-                                  Double sonar4,Double sonar5,Double sonar6, String classification){
+                                  Double sonar4,Double sonar5,Double sonar6, Double classificationVal){
         if(!new File(fileName+".arff").isFile()){
             System.out.println("No such file found, check for location or misspelling of filename");
             return null;
         }
+
+        String classification = "";
+
+        if(classificationVal==0.0){
+            classification = "Empty";
+        }
+        else if(classificationVal == 0.25){
+            classification = "25pFilled";
+        }
+        else if(classificationVal==0.50){
+            classification = "50pFilled";
+        }
+        else if(classificationVal==0.75){
+            classification = "75pFilled";
+        }
+        else if(classificationVal==1.0){
+            classification = "Full";
+        }
+
         String toAdd = String.format("%f,%f,%f,%f,%f,%f,%f,%s",weight,sonar1,sonar2,sonar3,sonar4,sonar5,sonar6,classification);
         System.out.println(toAdd);
         try{
@@ -245,11 +281,11 @@ public class DynamicBinFilledClassifier {
 // Declare the class attribute along with its values
         //   @ATTRIBUTE class      {1.00,0.75,0.50,0.25,0.00} == {Overflowing,75pFilled,50pFilled,25pFilled,Empty}
         FastVector fvClassVal = new FastVector(5);
-        fvClassVal.addElement(1.00);
-        fvClassVal.addElement(0.75);
-        fvClassVal.addElement(0.50);
-        fvClassVal.addElement(0.25);
-        fvClassVal.addElement(0.00);
+        fvClassVal.addElement("Full");
+        fvClassVal.addElement("75pFilled");
+        fvClassVal.addElement("50pFilled");
+        fvClassVal.addElement("25pFilled");
+        fvClassVal.addElement("Empty");
         Attribute ClassAttribute = new Attribute("binStatus", fvClassVal);
 
 // Declare the feature vector template
