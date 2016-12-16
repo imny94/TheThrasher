@@ -21,10 +21,10 @@
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
-        <activity android:name=".UserProfile" />
         <activity android:name=".About">
+            </activity>
 
-        </activity>
+
 
     </application>
 
