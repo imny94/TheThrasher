@@ -45,25 +45,26 @@ public class FirebaseFetcher {
 
 
     public static void main(String[] args){
-        JSONObject firebaseAllData = null;
+        Object firebaseAllData = null;
         try {
-            firebaseAllData = readJsonFromFirebase("https://smartbin-16031.firebaseio.com/.json");
+            System.out.println("Accessing firebase...");
+            firebaseAllData = readJsonFromFirebase("https://smartbin-16031.firebaseio.com/Raw Data/.json");
             System.out.println(firebaseAllData);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JSONObject smt = (JSONObject) firebaseAllData.get("Raw Data");
-
-
-        System.out.println("\n\n\n"+smt);
-        System.out.println(smt.getClass());
-
-        JSONObject smtInside = (JSONObject) smt.get("Blk 1 Lvl 3");
-        System.out.println("\n\n\n" + smtInside);
-        System.out.println(smtInside.getClass());
-
-        JSONObject smtInsideTheInside = (JSONObject) smtInside.get("16-12-2016-14:29:25");
-        System.out.println("\n\n\n\n" + smtInsideTheInside);
-        System.out.println(smtInsideTheInside.getClass());
+//        JSONObject smt = (JSONObject) firebaseAllData.get("Raw Data");
+//
+//
+//        System.out.println("\n\n\n"+smt);
+//        System.out.println(smt.getClass());
+//
+//        JSONObject smtInside = (JSONObject) smt.get("Blk 1 Lvl 3");
+//        System.out.println("\n\n\n" + smtInside);
+//        System.out.println(smtInside.getClass());
+//
+//        JSONObject smtInsideTheInside = (JSONObject) smtInside.get("16-12-2016-14:29:25");
+//        System.out.println("\n\n\n\n" + smtInsideTheInside);
+//        System.out.println(smtInsideTheInside.getClass());
     }
 }

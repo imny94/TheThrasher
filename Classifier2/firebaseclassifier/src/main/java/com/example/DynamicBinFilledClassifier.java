@@ -32,11 +32,11 @@ import weka.core.Instances;
 
 public class DynamicBinFilledClassifier {
 
-    FileWriter fw = null;
-    BufferedWriter bw = null;
+    static FileWriter fw = null;
+    static BufferedWriter bw = null;
     PrintWriter out = null;
     //WLSVM svmCls;
-    Classifier ibk;
+    static Classifier ibk;
 
 //    DynamicBinFilledClassifier(){
 //
@@ -54,8 +54,8 @@ public class DynamicBinFilledClassifier {
 		Returns null if unsuccessful and model if update completes
 	*/
 
-    public Classifier createNewModel(String fileName, Double weight, Double sonar1, Double sonar2, Double sonar3,
-                                     Double sonar4, Double sonar5, Double sonar6, Double classificationVal){
+    public static Classifier createNewModel(String fileName, Double weight, Double sonar1, Double sonar2, Double sonar3,
+                                            Double sonar4, Double sonar5, Double sonar6, Double classificationVal){
         String classification = "";
 
         if(classificationVal==0.0){
@@ -173,8 +173,8 @@ public class DynamicBinFilledClassifier {
 
      */
 
-    public Classifier updateModel(String fileName,Double weight, Double sonar1,Double sonar2,Double sonar3,
-                                  Double sonar4,Double sonar5,Double sonar6, Double classificationVal){
+    public static Classifier updateModel(String fileName, Double weight, Double sonar1, Double sonar2, Double sonar3,
+                                         Double sonar4, Double sonar5, Double sonar6, Double classificationVal){
         if(!new File(fileName+".arff").isFile()){
             System.out.println("No such file found, check for location or misspelling of filename");
             return null;
@@ -254,7 +254,7 @@ public class DynamicBinFilledClassifier {
 //    }
     }
 
-    private BufferedReader readFile(File f) {
+    private static BufferedReader readFile(File f) {
         try {
             return new BufferedReader(new FileReader(f.toString()));
         } catch (FileNotFoundException e) {
@@ -263,7 +263,7 @@ public class DynamicBinFilledClassifier {
         return null;
     }
 
-    public Instances createInstance(Double weight, Double sonar1, Double sonar2, Double sonar3, Double sonar4, Double sonar5, Double sonar6){
+    public static Instances createInstance(Double weight, Double sonar1, Double sonar2, Double sonar3, Double sonar4, Double sonar5, Double sonar6){
 
         // Declare the numeric weight and sonar attributes
         Attribute Attribute1 = new Attribute("weight"); // weight is in grams
@@ -325,6 +325,32 @@ public class DynamicBinFilledClassifier {
 // add the instance
         testingSet.add(iExample);
         return testingSet;
+    }
+
+    public static Double classify(Classifier ibk, Double weight, Double s1, Double s2, Double s3, Double s4, Double s5, Double s6 ){
+        Instances newDataSet = createInstance(weight,s1,s2,s3,s4,s5,s6);
+        Double pred;
+        Double howFilled = 0.0;
+        for(int i = 0; i<newDataSet.numInstances();i++){
+            try {
+                pred = ibk.classifyInstance(newDataSet.instance(i));
+                if(pred==0.0){
+                    howFilled = 1.00;
+                }else if(pred==1.0){
+                    howFilled = 0.75;
+                }else if(pred==2.0){
+                    howFilled = 0.50;
+                }else if(pred==3.0){
+                    howFilled = 0.25;
+                }else if(pred==4.0){
+                    howFilled = 0.00;
+                }
+                System.out.println("I predict ----------> You are ---------> " + howFilled + " filled");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return howFilled;
     }
 
 
