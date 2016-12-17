@@ -108,7 +108,7 @@ public class Tab2Info extends Fragment {
 
                 String text = spinner.getSelectedItem().toString();
                 if(text=="25%"||text=="50%"||text=="75%"){
-                    text=text.substring(0,1);
+                    text=text.substring(0,2);
                     DataInfo=(Double.parseDouble(text))/100.00;
 
                 }
@@ -122,7 +122,8 @@ public class Tab2Info extends Fragment {
                 Long tsLong = System.currentTimeMillis()/1000;
                 String ts = tsLong.toString();
                 Firebase myFirebaseRef=new Firebase("https://smartbin-16031.firebaseio.com/");
-                myFirebaseRef.child(ts).setValue(text);
+
+                myFirebaseRef.child("Staff Classification").child("Blk 1 Lvl 3").setValue(DataInfo);
                 EditText edit=(EditText)rootView.findViewById(R.id.editor);
                 edit.setText(text);
 

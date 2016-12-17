@@ -35,7 +35,7 @@ public class About extends AppCompatActivity {
         userProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent userpro=new Intent(About.this,UserProfile.class);
+                Intent userpro=new Intent(About.this,Main2Activity.class);
                 About.this.startActivity(userpro);
             }
         });

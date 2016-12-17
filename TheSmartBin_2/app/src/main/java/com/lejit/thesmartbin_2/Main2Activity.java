@@ -67,7 +67,7 @@ public class Main2Activity extends AppCompatActivity {
         userProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent userpro=new Intent(Main2Activity.this,UserProfile.class);
+                Intent userpro=new Intent(Main2Activity.this,Main2Activity.class);
                 Main2Activity.this.startActivity(userpro);
             }
         });
@@ -180,5 +180,6 @@ public class Main2Activity extends AppCompatActivity {
             return null;
         }
     }
+    
 
 }
