@@ -76,6 +76,8 @@ public class testClassifier {
         JSONObject latestTimeStamp = (JSONObject) allData.get("Bin Last Time Stamp");
         JSONArray binLocations = (JSONArray) allData.get("Bin Locations");
         JSONObject rawData = (JSONObject) allData.get("Raw Data");
+        JSONObject staffClassification = (JSONObject) allData.get("Staff Classification");
+//        System.out.println(staffClassification);
 //        System.out.println("\n\n\n"+latestTimeStamp);
 //        System.out.println(latestTimeStamp.getClass());
 //        System.out.println("\n\n\n"+binLocations);
@@ -134,7 +136,18 @@ public class testClassifier {
             Double weight = latestData.getDouble("pressure");
 
             System.out.println(latestData);
-            Double classification = classify(testClass,weight,s1,s2,s3,s4,s5,s6);
+            String userClassification = (String) staffClassification.get(location);
+            Double classification;
+            if (userClassification.equals("N.A")){
+                System.out.println("no user classification");
+                classification = classify(testClass,weight,s1,s2,s3,s4,s5,s6);
+            }
+            else {
+                System.out.println("Using user classification");
+                classification = Double.parseDouble(userClassification);
+                testClass.updateModel("sampleTest",weight,s1,s2,s3,s4,s5,s6,classification);
+            }
+
             String stringClassification = classification.toString();
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
             Date date = new Date();
@@ -143,12 +156,13 @@ public class testClassifier {
             timeStampWithClassification.put(formattedDate,stringClassification);
             classificationForGraph.put(location,timeStampWithClassification);
             System.out.println("adding bin classification for graph to firebase...");
-            BinClassificationRefForGraph.child(location).setValue(classificationForGraph);
+            BinClassificationRefForGraph.setValue(classificationForGraph);
             classificationForGraph.clear();
 
             classificationMap.put("Classification",stringClassification);
             classificationMap.put("Time", formattedDate);
             binClassification.put(location,classificationMap);
+            System.out.println(binClassification.toString());
             System.out.println("adding bin classification to firebase...");
             BinClassificationRef.setValue(binClassification);
             classificationMap.clear();
