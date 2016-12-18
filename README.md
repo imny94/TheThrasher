@@ -8,9 +8,9 @@ This branch contains the code used in the project. Included in this project are 
 | ------------- |:---------:|
 | Load Cell | LoadCell |
 | Ultrasonic Sensor | SonarSystem |
-| Firebase Management | Firebase |
+| Firebase Management | FirebaseData |
 | Classifier for State of Bin | Classifier2 |
-| Android Application for Front-End Users | SmartBin_2 |
+| Android Application for Front-End Users | TheSmartBin_2 |
 | Grapher on Android Application for Data Analytics | Grapher |
 
 Load Cell is connected to Raspberry pi via Arduino for Analog to Digital conversion.
