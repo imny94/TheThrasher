@@ -6,7 +6,8 @@ This branch contains the code used in the project. Included in this project are 
 
 | Code For      | Folder    |
 | ------------- |:---------:|
-| Load Cell and Ultrasonic | To be Linked |
+| Load Cell | Load Cell |
+| Ultrasonic Sensor | Sonar System |
 | Classifier for State of Bin | Classifier2 |
 | Android Application for Front-End Users | To be Linked |
 | Grapher on Android Application for Data Analytics | To be Linked |
