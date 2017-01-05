@@ -1,11 +1,11 @@
 import SonarSystem
 import SonarUnit
 
-TRIG1 = ?
-ECHO1 = ?
+TRIG1 = 23
+ECHO1 = 24
 
-TRIG2 = ?
-ECHO2 = ?
+TRIG2 = 27
+ECHO2 = 22
 
 def main():
 	TDM = SonarSystem.SonarSystem()
