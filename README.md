@@ -20,3 +20,5 @@ are then pushed into firebase from the Raspberry Pi to this location : https://s
 Classifier is a basic Machine-Learning Style Classifier which is used to classify the state of the dustbin
 based on values obtained from ultrasonic and load cells equipped onto dustbin. Run testClassifier.java to start 
 Classifier. Classifier will run-automatically, retrieving and updating relevant information from and to firebase.
+
+### Note: ClassifierProject does not contain relevant files for Classifier. They are waiting to be cleaned up
